@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { FiX, FiMail, FiLock, FiUser, FiBook } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 
 const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -114,136 +116,19 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    {!isLogin && (
-                      <>
-                        <div>
-                          <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-gray-700">
-                            Full Name
-                          </label>
-                          <div className="mt-1 relative rounded-md shadow-sm">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                              <FiUser className="h-5 w-5 text-gray-400" />
-                            </div>
-                            <input
-                              type="text"
-                              name="name"
-                              id="name"
-                              value={formData.name}
-                              onChange={handleChange}
-                              className="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                              placeholder="John Doe"
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="studentId"
-                            className="block text-sm font-medium text-gray-700">
-                            Student ID
-                          </label>
-                          <div className="mt-1 relative rounded-md shadow-sm">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                              <FiBook className="h-5 w-5 text-gray-400" />
-                            </div>
-                            <input
-                              type="text"
-                              name="studentId"
-                              id="studentId"
-                              value={formData.studentId}
-                              onChange={handleChange}
-                              className="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                              placeholder="123456789"
-                              required
-                            />
-                          </div>
-                        </div>
-                      </>
-                    )}
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700">
-                        Email
-                      </label>
-                      <div className="mt-1 relative rounded-md shadow-sm">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FiMail className="h-5 w-5 text-gray-400" />
-                        </div>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                          placeholder="you@example.com"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="password"
-                        className="block text-sm font-medium text-gray-700">
-                        Password
-                      </label>
-                      <div className="mt-1 relative rounded-md shadow-sm">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FiLock className="h-5 w-5 text-gray-400" />
-                        </div>
-                        <input
-                          type="password"
-                          name="password"
-                          id="password"
-                          value={formData.password}
-                          onChange={handleChange}
-                          className="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                          placeholder="••••••••"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    {!isLogin && (
-                      <div>
-                        <label
-                          htmlFor="confirmPassword"
-                          className="block text-sm font-medium text-gray-700">
-                          Confirm Password
-                        </label>
-                        <div className="mt-1 relative rounded-md shadow-sm">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <FiLock className="h-5 w-5 text-gray-400" />
-                          </div>
-                          <input
-                            type="password"
-                            name="confirmPassword"
-                            id="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                            className="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                            placeholder="••••••••"
-                            required
-                          />
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="mt-5 sm:mt-6">
-                      <button
-                        type="submit"
-                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-600 text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:text-sm">
-                        {isLogin ? "Sign In" : "Create Account"}
-                      </button>
-                    </div>
-                  </form>
+                  {isLogin ? (
+                    <LoginForm
+                      formData={formData}
+                      onChange={handleChange}
+                      onSubmit={handleSubmit}
+                    />
+                  ) : (
+                    <RegisterForm
+                      formData={formData}
+                      onChange={handleChange}
+                      onSubmit={handleSubmit}
+                    />
+                  )}
 
                   <div className="mt-4 text-center">
                     <button

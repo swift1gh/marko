@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FiShoppingCart,
   FiUser,
@@ -9,16 +9,16 @@ import {
   FiTag,
   FiInfo,
 } from "react-icons/fi";
-import AuthModal from "./auth/AuthModal";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/images/marko_logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,15 +28,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleAuthSuccess = (userData) => {
-    setIsAuthenticated(true);
-    setUser(userData);
-    setIsAuthModalOpen(false);
-  };
-
   const handleLogout = () => {
     setIsAuthenticated(false);
     setUser(null);
+    setIsMenuOpen(false);
+  };
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+    setIsMenuOpen(false);
   };
 
   const isActive = (path) => {
@@ -60,6 +60,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-2xl font-bold text-purple-600">
+              {logo}
               Marko
             </Link>
           </div>
@@ -91,55 +92,26 @@ const Navbar = () => {
               <span className="sr-only">View cart</span>
               <FiShoppingCart className="h-6 w-6" />
             </Link>
-            {isAuthenticated ? (
-              <div className="relative">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-purple-600 transition-colors duration-200">
-                  <span className="sr-only">View profile</span>
-                  <FiUser className="h-6 w-6" />
-                </button>
-                {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                    <div className="px-4 py-2 text-sm text-gray-700">
-                      {user?.name || "User"}
-                    </div>
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Your Profile
-                    </Link>
-                    <Link
-                      to="/orders"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Orders
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Sign out
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-purple-600 transition-colors duration-200">
-                <span className="sr-only">Sign in</span>
-                <FiUser className="h-6 w-6" />
-              </button>
-            )}
+            <button
+              onClick={handleProfileClick}
+              className={`p-2 rounded-full transition-colors duration-200 ${
+                isActive("/profile")
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100 hover:text-purple-600"
+              }`}>
+              <span className="sr-only">Profile</span>
+              <FiUser className="h-6 w-6" />
+            </button>
           </div>
-          <div className="-mr-2 flex items-center sm:hidden">
+          <div className="flex items-center sm:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
-              <span className="sr-only">Open main menu</span>
+              className="p-2 rounded-md text-gray-500 hover:bg-gray-100 hover:text-purple-600 transition-colors duration-200">
+              <span className="sr-only">Open menu</span>
               {isMenuOpen ? (
-                <FiX className="block h-6 w-6" />
+                <FiX className="h-6 w-6" />
               ) : (
-                <FiMenu className="block h-6 w-6" />
+                <FiMenu className="h-6 w-6" />
               )}
             </button>
           </div>
@@ -180,34 +152,24 @@ const Navbar = () => {
                     isActive("/cart")
                       ? "bg-purple-100 text-purple-600"
                       : "text-gray-500 hover:bg-gray-100 hover:text-purple-600"
-                  }`}>
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}>
                   <span className="sr-only">View cart</span>
                   <FiShoppingCart className="h-6 w-6" />
                 </Link>
-                {!isAuthenticated && (
-                  <button
-                    onClick={() => {
-                      setIsAuthModalOpen(true);
-                      setIsMenuOpen(false);
-                    }}
-                    className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-purple-600 transition-colors duration-200">
-                    <span className="sr-only">Sign in</span>
-                    <FiUser className="h-6 w-6" />
-                  </button>
-                )}
+                <button
+                  onClick={handleProfileClick}
+                  className={`p-2 rounded-full transition-colors duration-200 ${
+                    isActive("/profile")
+                      ? "bg-purple-100 text-purple-600"
+                      : "text-gray-500 hover:bg-gray-100 hover:text-purple-600"
+                  }`}>
+                  <span className="sr-only">Profile</span>
+                  <FiUser className="h-6 w-6" />
+                </button>
               </div>
               {isAuthenticated && (
                 <div className="mt-3 space-y-1">
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
-                    Your Profile
-                  </Link>
-                  <Link
-                    to="/orders"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
-                    Orders
-                  </Link>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
@@ -219,13 +181,6 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Auth Modal */}
-      <AuthModal
-        isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
-        onAuthSuccess={handleAuthSuccess}
-      />
     </motion.nav>
   );
 };

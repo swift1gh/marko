@@ -1,33 +1,57 @@
-import { Link } from "react-router-dom";
-import { FiArrowRight, FiStar } from "react-icons/fi";
-import { products } from "../data/products";
+import { FiStar } from "react-icons/fi";
+import HeroSection from "../components/home/HeroSection";
+import FlashSales from "../components/home/FlashSales";
+import StudentFeatures from "../components/home/StudentFeatures";
+import FeaturedProducts from "../components/home/FeaturedProducts";
+import Newsletter from "../components/home/Newsletter";
+import ProductCategories from "../components/home/ProductCategories";
 
 const HomePage = () => {
-  const featuredProducts = products.slice(0, 4); // Get first 4 products
-  const categories = [
+  const featuredProducts = [
     {
-      name: "Electronics",
+      id: 1,
+      name: "MacBook Pro M1",
+      description: "Perfect for students and professionals",
+      price: 999.99,
       image:
-        "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500",
-      description: "Latest gadgets and tech accessories",
+        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1452&q=80",
+      rating: 5,
+      reviews: 128,
+      vendor: "TechStore",
+      discount: "10% OFF",
     },
     {
-      name: "Furniture",
+      id: 2,
+      name: "Wireless Headphones",
+      description: "Noise-cancelling for focused study sessions",
+      price: 79.99,
       image:
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500",
-      description: "Ergonomic study and dorm furniture",
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      rating: 4,
+      reviews: 89,
+      vendor: "AudioPro",
     },
     {
-      name: "School Supplies",
+      id: 3,
+      name: "Scientific Calculator",
+      description: "Advanced features for engineering students",
+      price: 49.99,
       image:
-        "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=500",
-      description: "Essential supplies for students",
+        "https://images.unsplash.com/photo-1587145820266-a5951ee6a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      rating: 4,
+      reviews: 45,
+      vendor: "MathTools",
     },
     {
-      name: "Books",
+      id: 4,
+      name: "Study Desk Lamp",
+      description: "Adjustable brightness for late-night study sessions",
+      price: 29.99,
       image:
-        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500",
-      description: "Textbooks and study materials",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      rating: 5,
+      reviews: 67,
+      vendor: "HomeEssentials",
     },
   ];
 
@@ -46,107 +70,12 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <div className="relative bg-purple-900 text-white">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920"
-            alt="Students studying"
-            className="w-full h-full object-cover opacity-30"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Welcome to Marko Marketplace
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-            Your one-stop shop for all student essentials. Find everything you
-            need for your academic journey at great prices.
-          </p>
-          <Link
-            to="/shop"
-            className="inline-flex items-center bg-white text-purple-900 px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition-colors">
-            Shop Now
-            <FiArrowRight className="ml-2" />
-          </Link>
-        </div>
-      </div>
-
-      {/* Featured Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">
-          Featured Products
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <Link
-              key={product.id}
-              to={`/product/${product.id}`}
-              className="group">
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                <div className="aspect-w-1 aspect-h-1">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-center object-cover group-hover:opacity-75"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-medium text-gray-900 mb-1">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center mb-2">
-                    {renderStars(product.rating)}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="text-lg font-bold text-gray-900">
-                      ${product.price}
-                    </p>
-                    {product.discount && (
-                      <span className="bg-orange-500 text-white text-sm px-2 py-1 rounded">
-                        {product.discount}% OFF
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Categories */}
-      <div className="bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Shop by Category
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category) => (
-              <Link
-                key={category.name}
-                to={`/shop`}
-                className="group relative rounded-lg overflow-hidden bg-white shadow-sm">
-                <div className="aspect-w-3 aspect-h-2">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-center object-cover group-hover:opacity-75"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-medium text-gray-900 mb-1">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm text-gray-500">
-                    {category.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      <HeroSection />
+      <ProductCategories />
+      <FlashSales />
+      <StudentFeatures />
+      <FeaturedProducts products={featuredProducts} />
+      <Newsletter />
 
       {/* Why Choose Us */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

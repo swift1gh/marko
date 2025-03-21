@@ -49,13 +49,13 @@ const StudentFeatures = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-primary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-white mb-4">
             Student Benefits
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-300">
             Special features designed just for students like you
           </p>
         </div>
@@ -66,12 +66,12 @@ const StudentFeatures = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="text-blue-600 mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              className="bg-primary-800/50 backdrop-blur-sm rounded-lg p-6 hover:shadow-lg transition-all duration-200 border border-primary-700/30">
+              <div className="text-primary-200 mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-semibold text-white mb-2">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-gray-300">{feature.description}</p>
             </motion.div>
           ))}
         </div>

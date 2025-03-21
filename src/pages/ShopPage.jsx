@@ -9,7 +9,7 @@ const ShopPage = () => {
   const [viewType, setViewType] = useState("grid"); // 'grid' or 'list'
   const [sortBy, setSortBy] = useState("featured"); // 'featured', 'price-low', 'price-high', 'rating'
   const [selectedCategory, setSelectedCategory] = useState(
-    searchParams.get("category") || "all"
+    searchParams.get("category") || "All"
   );
   const [priceRange, setPriceRange] = useState({
     min: 0,
@@ -24,7 +24,7 @@ const ShopPage = () => {
   // Update URL when filters change
   useEffect(() => {
     const params = new URLSearchParams();
-    if (selectedCategory !== "all") {
+    if (selectedCategory !== "All") {
       params.set("category", selectedCategory);
     }
     if (filters.inStock) params.set("inStock", "true");
@@ -42,7 +42,7 @@ const ShopPage = () => {
   }, [searchParams]);
 
   const categories = [
-    "all",
+    "All",
     "Electronics",
     "Furniture",
     "School Supplies",
@@ -61,7 +61,7 @@ const ShopPage = () => {
   let filteredProducts = [...products];
 
   // Apply category filter
-  if (selectedCategory !== "all") {
+  if (selectedCategory !== "All") {
     filteredProducts = filteredProducts.filter(
       (product) => product.category === selectedCategory
     );
