@@ -13,6 +13,8 @@ import {
   FiBox,
   FiCheck,
 } from "react-icons/fi";
+import verificationBadge from "../assets/images/verification_badge.svg";
+import VerifiedName from "../components/VerifiedName";
 
 const ProfilePage = () => {
   const userName = localStorage.getItem("userName");
@@ -105,7 +107,12 @@ const ProfilePage = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     className="text-3xl font-bold text-gray-900 mb-1">
-                    {formData.name}
+                    <VerifiedName
+                      name={formData.name}
+                      isVerified={isVerified}
+                      verificationType={verificationType}
+                      className="text-3xl font-bold"
+                    />
                   </motion.h1>
                   <motion.p
                     initial={{ opacity: 0, x: -20 }}
@@ -115,6 +122,16 @@ const ProfilePage = () => {
                     <FiMail className="w-4 h-4 mr-2" />
                     {formData.email}
                   </motion.p>
+                  {isVerified && (
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="mt-1 text-sm text-gray-500">
+                      Verified {verificationType} • Joined{" "}
+                      {localStorage.getItem("lastLoginDate") || "March 2024"}
+                    </motion.p>
+                  )}
                 </div>
               </div>
               <motion.button

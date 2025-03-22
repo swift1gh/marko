@@ -12,27 +12,35 @@ const Footer = () => {
               About Marko
             </h3>
             <p className="text-gray-300 mb-4">
-              Your trusted marketplace for student essentials. We connect
-              students with quality products at great prices.
+              Your trusted marketplace for KNUST student essentials. We connect
+              students with quality products and campus opportunities.
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://facebook.com/knustmarko"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiFacebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/knustmarko"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiTwitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/knustmarko"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiInstagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com/company/knustmarko"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiLinkedin className="w-5 h-5" />
               </a>
@@ -79,35 +87,35 @@ const Footer = () => {
           {/* Categories */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">
-              Categories
+              Campus Categories
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/shop?category=electronics"
+                  to="/shop?category=Electronics"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
-                  Electronics
+                  Lab Equipment
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop?category=furniture"
+                  to="/shop?category=Furniture"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
-                  Furniture
+                  Hostel Essentials
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop?category=books"
+                  to="/shop?category=Books"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
-                  Books
+                  KNUST Textbooks
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop?category=supplies"
+                  to="/shop?category=School%20Supplies"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
-                  School Supplies
+                  Academic Supplies
                 </Link>
               </li>
             </ul>
@@ -119,10 +127,10 @@ const Footer = () => {
               Contact Us
             </h3>
             <ul className="space-y-2 text-gray-300">
-              <li>Email: support@marko.com</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Address: 123 University Ave</li>
-              <li>City, State 12345</li>
+              <li>Email: support@marko-knust.com</li>
+              <li>Phone: +233 50 123 4567</li>
+              <li>Location: KNUST Commercial Area</li>
+              <li>Kumasi, Ghana</li>
             </ul>
           </div>
         </div>
@@ -131,7 +139,7 @@ const Footer = () => {
         <div className="border-t border-primary-800/50 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 text-sm">
-              © {new Date().getFullYear()} Marko Marketplace. All rights
+              © {new Date().getFullYear()} Marko KNUST Marketplace. All rights
               reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">

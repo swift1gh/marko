@@ -11,6 +11,9 @@ const ShopPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(
     searchParams.get("category") || "All"
   );
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || ""
+  );
   const [priceRange, setPriceRange] = useState({
     min: 0,
     max: 1000,
@@ -27,27 +30,33 @@ const ShopPage = () => {
     if (selectedCategory !== "All") {
       params.set("category", selectedCategory);
     }
+    if (searchQuery) {
+      params.set("search", searchQuery);
+    }
     if (filters.inStock) params.set("inStock", "true");
     if (filters.onSale) params.set("onSale", "true");
     if (filters.newArrival) params.set("newArrival", "true");
     setSearchParams(params);
-  }, [selectedCategory, filters, setSearchParams]);
+  }, [selectedCategory, searchQuery, filters, setSearchParams]);
 
   // Read URL parameters on mount
   useEffect(() => {
     const inStock = searchParams.get("inStock") === "true";
     const onSale = searchParams.get("onSale") === "true";
     const newArrival = searchParams.get("newArrival") === "true";
+    const search = searchParams.get("search") || "";
     setFilters({ inStock, onSale, newArrival });
+    setSearchQuery(search);
   }, [searchParams]);
 
   const categories = [
     "All",
     "Electronics",
-    "Furniture",
-    "School Supplies",
     "Books",
-    "Accessories",
+    "Stationery",
+    "Furniture",
+    "Fashion",
+    "Sports",
   ];
 
   const handleFilterChange = (filter) => {
@@ -59,6 +68,17 @@ const ShopPage = () => {
 
   // Filter and sort products
   let filteredProducts = [...products];
+
+  // Apply search filter
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase();
+    filteredProducts = filteredProducts.filter(
+      (product) =>
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query)
+    );
+  }
 
   // Apply category filter
   if (selectedCategory !== "All") {
@@ -106,6 +126,11 @@ const ShopPage = () => {
       // Featured sorting (default)
       break;
   }
+
+  const handleAddToCart = (product) => {
+    // TODO: Implement add to cart functionality
+    console.log("Adding to cart:", product);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -256,7 +281,11 @@ const ShopPage = () => {
                 : "space-y-4"
             }>
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} view={viewType} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
             ))}
           </div>
 

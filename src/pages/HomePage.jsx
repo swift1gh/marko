@@ -5,6 +5,7 @@ import StudentFeatures from "../components/home/StudentFeatures";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import Newsletter from "../components/home/Newsletter";
 import ProductCategories from "../components/home/ProductCategories";
+import StudyAndWork from "../components/home/StudyAndWork";
 
 const HomePage = () => {
   const featuredProducts = [
@@ -74,6 +75,7 @@ const HomePage = () => {
       <ProductCategories />
       <FlashSales />
       <StudentFeatures />
+      <StudyAndWork />
       <FeaturedProducts products={featuredProducts} />
       <Newsletter />
 

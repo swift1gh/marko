@@ -65,7 +65,7 @@ const ProductCategories = () => {
             </p>
           </div>
           <Link
-            to="/categories"
+            to="/shop"
             className="flex items-center space-x-1 text-primary-200 hover:text-primary-100 font-medium">
             <span>View All Categories</span>
             <FiChevronRight className="w-4 h-4" />
@@ -77,7 +77,7 @@ const ProductCategories = () => {
           {categories.map((category) => (
             <Link
               key={category.id}
-              to={`/category/${category.name.toLowerCase()}`}
+              to={`/shop?category=${category.name}`}
               className="group">
               <div className="relative h-full bg-primary-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
                 {/* Background Gradient */}

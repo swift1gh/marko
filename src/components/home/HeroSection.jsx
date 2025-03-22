@@ -6,8 +6,8 @@ const HeroSection = () => {
     <section className="relative h-[80vh] overflow-hidden">
       {/* Background Image */}
       <img
-        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-        alt="Students studying"
+        src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1471&q=80"
+        alt="KNUST students studying in the library"
         className="absolute inset-0 w-full h-full object-cover object-center scale-105 transform transition-transform duration-10000 hover:scale-100"
       />
 
@@ -38,7 +38,16 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl sm:text-2xl md:text-3xl text-gray-100 font-light max-w-3xl mx-auto">
-              Your One-Stop Shop for Student Essentials
+              Your One-Stop Shop for KNUST Student Essentials
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg text-gray-200 max-w-2xl mx-auto">
+              From textbooks to tech, find everything you need for success at
+              Kwame Nkrumah University of Science and Technology
             </motion.p>
 
             <motion.div
@@ -75,7 +84,7 @@ const HeroSection = () => {
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-900 to-transparent" />
+      <div className="absolute  left-0 right-0 h-32 bg-gradient-to-t from-primary-900 to-transparent" />
     </section>
   );
 };

@@ -11,6 +11,7 @@ import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import ProfilePage from "./pages/ProfilePage";
 import VendorDashboard from "./pages/VendorDashboard";
+import VendorProducts from "./pages/VendorProducts";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import AboutPage from "./pages/AboutPage";
@@ -21,6 +22,8 @@ import WishlistPage from "./pages/WishlistPage";
 import SettingsPage from "./pages/SettingsPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import JobsPage from "./pages/JobsPage";
+import JobDetailsPage from "./pages/JobDetailsPage";
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -99,6 +102,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/vendor/products"
+            element={
+              <ProtectedRoute>
+                <VendorProducts />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/jobs/:id" element={<JobDetailsPage />} />
         </Routes>
       </Layout>
     </Router>

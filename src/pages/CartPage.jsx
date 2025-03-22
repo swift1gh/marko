@@ -50,6 +50,8 @@ const CartPage = () => {
   const shipping = subtotal > 100 ? 0 : 10;
   const total = subtotal + shipping;
 
+  const formatPrice = (price) => `GH₵ ${price.toFixed(2)}`;
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
@@ -90,11 +92,11 @@ const CartPage = () => {
                           <Link to={`/product/${item.id}`}>{item.name}</Link>
                         </h3>
                         <p className="ml-4">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          {formatPrice(item.price * item.quantity)}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
-                        ${item.price} each
+                        {formatPrice(item.price)} each
                       </p>
                     </div>
                     <div className="flex-1 flex items-end justify-between text-sm">
@@ -140,14 +142,14 @@ const CartPage = () => {
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-gray-600">Subtotal</p>
                   <p className="text-sm font-medium text-gray-900">
-                    ${subtotal.toFixed(2)}
+                    {formatPrice(subtotal)}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-gray-600">Shipping</p>
                   <p className="text-sm font-medium text-gray-900">
-                    {shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+                    {shipping === 0 ? "Free" : formatPrice(shipping)}
                   </p>
                 </div>
 
@@ -156,7 +158,7 @@ const CartPage = () => {
                     Order Total
                   </p>
                   <p className="text-base font-medium text-gray-900">
-                    ${total.toFixed(2)}
+                    {formatPrice(total)}
                   </p>
                 </div>
               </div>

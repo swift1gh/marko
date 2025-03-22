@@ -1,85 +1,121 @@
-import { FiPlus, FiStar } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  FiTag,
+  FiPackage,
+  FiEdit2,
+  FiTrash2,
+  FiShoppingCart,
+  FiHeart,
+} from "react-icons/fi";
 
-const ProductCard = ({ product }) => {
-  const {
-    id,
-    name,
-    price,
-    originalPrice,
-    rating,
-    category,
-    image,
-    discount,
-    isNew,
-    itemsLeft,
-  } = product;
+const ProductCard = ({
+  product,
+  isVendorView = false,
+  isWishlistView = false,
+  onEdit,
+  onDelete,
+  onAddToCart,
+  onRemoveFromWishlist,
+}) => {
+  const { name, price, category, itemsLeft, image, description } = product;
 
-  const renderStars = (rating) => {
-    return [...Array(5)].map((_, index) => (
-      <FiStar
-        key={index}
-        className={`${
-          index < Math.floor(rating)
-            ? "text-yellow-400 fill-current"
-            : "text-gray-300"
-        }`}
-      />
-    ));
-  };
+  const stockStatus =
+    itemsLeft > 0 ? (
+      <span className="text-green-600">In Stock</span>
+    ) : (
+      <span className="text-red-600">Out of Stock</span>
+    );
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-      <div className="relative">
-        <Link to={`/product/${id}`}>
-          <img src={image} alt={name} className="w-full h-48 object-cover" />
-        </Link>
-        {discount && (
-          <span className="absolute top-2 left-2 bg-orange-500 text-white text-sm px-2 py-1 rounded">
-            {discount}% OFF
-          </span>
-        )}
-        {isNew && (
-          <span className="absolute top-2 right-2 bg-orange-500 text-white text-sm px-2 py-1 rounded">
-            New
-          </span>
-        )}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200 flex flex-col h-full">
+      {/* Image Container with fixed aspect ratio */}
+      <div className="relative pt-[60%] bg-gray-100 overflow-hidden">
+        <img
+          src={image}
+          alt={name}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          onError={(e) => {
+            e.target.src =
+              "https://via.placeholder.com/400x240?text=Product+Image";
+          }}
+        />
       </div>
 
-      <div className="p-4">
-        <div className="text-sm text-gray-500 mb-1">{category}</div>
-        <Link to={`/product/${id}`}>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">{name}</h3>
-        </Link>
+      {/* Content Container */}
+      <div className="p-6 flex-1 flex flex-col">
+        {/* Title */}
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 flex-none min-h-[3.5rem]">
+          {name}
+        </h3>
 
-        <div className="flex items-center mb-2">
-          <div className="flex items-center mr-2">{renderStars(rating)}</div>
-          <span className="text-sm text-gray-500">({rating})</span>
+        {/* Description */}
+        <p className="text-sm text-gray-500 mb-4 line-clamp-2 flex-none min-h-[2.5rem]">
+          {description}
+        </p>
+
+        {/* Category and Price */}
+        <div className="flex items-center justify-between mb-4 flex-none">
+          <div className="flex items-center text-gray-500 text-sm">
+            <FiTag className="w-4 h-4 mr-1 flex-shrink-0" />
+            <span className="truncate max-w-[120px]">{category}</span>
+          </div>
+          <div className="flex items-center text-primary-600 font-semibold">
+            GH₵ {Number(price).toFixed(2)}
+          </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-lg font-bold text-gray-900">${price}</span>
-            {originalPrice && (
-              <span className="ml-2 text-sm text-gray-500 line-through">
-                ${originalPrice}
-              </span>
+        {/* Stock Status and Actions */}
+        <div className="flex items-center justify-between flex-none mt-auto pt-4 border-t border-gray-100">
+          <div className="flex items-center text-gray-500 text-sm">
+            <FiPackage className="w-4 h-4 mr-1 flex-shrink-0" />
+            {stockStatus}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center space-x-2">
+            {isVendorView ? (
+              <>
+                <button
+                  onClick={() => onEdit?.(product)}
+                  className="p-2 text-gray-600 hover:text-primary-600 transition-colors duration-200">
+                  <FiEdit2 className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => onDelete?.(product)}
+                  className="p-2 text-gray-600 hover:text-red-600 transition-colors duration-200">
+                  <FiTrash2 className="w-5 h-5" />
+                </button>
+              </>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => onAddToCart?.(product)}
+                  disabled={itemsLeft === 0}
+                  className={`inline-flex items-center px-3 py-2 border border-transparent rounded-lg text-sm font-medium
+                    ${
+                      itemsLeft > 0
+                        ? "text-white bg-primary-600 hover:bg-primary-700"
+                        : "text-gray-400 bg-gray-100 cursor-not-allowed"
+                    }`}>
+                  <FiShoppingCart className="w-4 h-4 mr-2" />
+                  {itemsLeft > 0 ? "Add to Cart" : "Out of Stock"}
+                </button>
+                {isWishlistView && (
+                  <button
+                    onClick={() => onRemoveFromWishlist?.(product)}
+                    className="p-2 text-gray-400 hover:text-red-500 transition-colors duration-200">
+                    <FiHeart className="w-5 h-5" />
+                  </button>
+                )}
+              </div>
             )}
           </div>
-          <button
-            className="p-2 rounded-full bg-purple-600 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-            aria-label="Add to cart">
-            <FiPlus className="w-5 h-5" />
-          </button>
         </div>
-
-        {itemsLeft && itemsLeft < 10 && (
-          <div className="mt-2 text-sm text-orange-600">
-            Only {itemsLeft} items left
-          </div>
-        )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
