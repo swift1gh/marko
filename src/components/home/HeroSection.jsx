@@ -7,7 +7,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <img
         src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1471&q=80"
-        alt="KNUST students studying in the library"
+        alt="Students studying in the library"
         className="absolute inset-0 w-full h-full object-cover object-center scale-105 transform transition-transform duration-10000 hover:scale-100"
       />
 
@@ -38,7 +38,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl sm:text-2xl md:text-3xl text-gray-100 font-light max-w-3xl mx-auto">
-              Your One-Stop Shop for KNUST Student Essentials
+              Your One-Stop Shop for Student Essentials
             </motion.p>
 
             <motion.p

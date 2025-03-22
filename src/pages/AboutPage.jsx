@@ -51,19 +51,19 @@ const AboutPage = () => {
 
   const team = [
     {
-      name: "Sarah Johnson",
+      name: "Prince Yekunya",
       role: "Founder & CEO",
       image:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
     {
-      name: "Michael Chen",
+      name: "Sackey Kwame",
       role: "Head of Technology",
       image:
         "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
     {
-      name: "Emily Rodriguez",
+      name: "Chris Marfo",
       role: "Community Manager",
       image:
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -82,7 +82,7 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About Marko Marketplace
+              About Marko
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
               We're on a mission to revolutionize how students buy and sell
@@ -183,7 +183,7 @@ const AboutPage = () => {
               Our Team
             </h2>
             <p className="mt-4 text-lg text-gray-500">
-              Meet the people behind Marko Marketplace
+              Meet the people behind Marko
             </p>
           </div>
 

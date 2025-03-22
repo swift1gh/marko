@@ -24,6 +24,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import JobsPage from "./pages/JobsPage";
 import JobDetailsPage from "./pages/JobDetailsPage";
+import EventsPage from "./pages/EventsPage";
+import EventDetailsPage from "./pages/EventDetailsPage";
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -52,6 +54,8 @@ function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/events/:id" element={<EventDetailsPage />} />
 
           {/* Protected Routes */}
           <Route

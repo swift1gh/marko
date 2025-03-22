@@ -32,7 +32,7 @@ const ContactPage = () => {
     {
       icon: <FiPhone className="w-6 h-6" />,
       title: "Phone",
-      content: "(555) 123-4567",
+      content: "+233 53 141 6989",
       link: "tel:+15551234567",
     },
     {

@@ -56,6 +56,36 @@ const HomePage = () => {
     },
   ];
 
+  const featuredEvents = [
+    {
+      id: 1,
+      name: "Tech Fest 2025",
+      date: "April 15, 2025",
+      location: "Campus Auditorium",
+      price: "Free",
+      image:
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    },
+    {
+      id: 2,
+      name: "Music Night",
+      date: "April 20, 2025",
+      location: "Main Quad",
+      price: "$10",
+      image:
+        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    },
+    {
+      id: 3,
+      name: "Career Fair",
+      date: "May 5, 2025",
+      location: "Student Center",
+      price: "Free",
+      image:
+        "https://images.unsplash.com/photo-1584697964154-3c1b5f3d7c8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    },
+  ];
+
   const renderStars = (rating) => {
     return [...Array(5)].map((_, index) => (
       <FiStar
@@ -82,7 +112,7 @@ const HomePage = () => {
       {/* Why Choose Us */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-          Why Choose Marko Marketplace?
+          Why Choose Marko?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
@@ -151,6 +181,46 @@ const HomePage = () => {
               Quick delivery to your dorm or apartment
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Upcoming Campus Events */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          Upcoming Campus Events
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredEvents.map((event) => (
+            <div
+              key={event.id}
+              className="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src={event.image}
+                alt={event.name}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {event.name}
+                </h3>
+                <p className="text-gray-500">{event.date}</p>
+                <p className="text-gray-500">{event.location}</p>
+                <p className="text-purple-600 font-bold">{event.price}</p>
+                <a
+                  href={`/events/${event.id}`}
+                  className="mt-4 inline-block text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">
+                  View Details
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <a
+            href="/events"
+            className="text-white bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded text-lg">
+            View All Events
+          </a>
         </div>
       </div>
     </div>

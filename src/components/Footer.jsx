@@ -12,33 +12,33 @@ const Footer = () => {
               About Marko
             </h3>
             <p className="text-gray-300 mb-4">
-              Your trusted marketplace for KNUST student essentials. We connect
+              Your trusted marketplace for student essentials. We connect
               students with quality products and campus opportunities.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/knustmarko"
+                href="https://facebook.com/marko"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiFacebook className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/knustmarko"
+                href="https://twitter.com/marko"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiTwitter className="w-5 h-5" />
               </a>
               <a
-                href="https://instagram.com/knustmarko"
+                href="https://instagram.com/marko"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
                 <FiInstagram className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/company/knustmarko"
+                href="https://linkedin.com/company/marko"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-200 hover:text-white transition-colors">
@@ -87,7 +87,7 @@ const Footer = () => {
           {/* Categories */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">
-              Campus Categories
+              Categories
             </h3>
             <ul className="space-y-2">
               <li>
@@ -108,7 +108,7 @@ const Footer = () => {
                 <Link
                   to="/shop?category=Books"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
-                  KNUST Textbooks
+                  Textbooks
                 </Link>
               </li>
               <li>
@@ -116,6 +116,13 @@ const Footer = () => {
                   to="/shop?category=School%20Supplies"
                   className="text-gray-300 hover:text-primary-200 transition-colors">
                   Academic Supplies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/events"
+                  className="text-gray-300 hover:text-primary-200 transition-colors">
+                  Events
                 </Link>
               </li>
             </ul>
@@ -127,8 +134,8 @@ const Footer = () => {
               Contact Us
             </h3>
             <ul className="space-y-2 text-gray-300">
-              <li>Email: support@marko-knust.com</li>
-              <li>Phone: +233 50 123 4567</li>
+              <li>Email: support@marko.com</li>
+              <li>Phone: +233 53 141 6989</li>
               <li>Location: KNUST Commercial Area</li>
               <li>Kumasi, Ghana</li>
             </ul>
@@ -139,8 +146,7 @@ const Footer = () => {
         <div className="border-t border-primary-800/50 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 text-sm">
-              © {new Date().getFullYear()} Marko KNUST Marketplace. All rights
-              reserved.
+              © {new Date().getFullYear()} Marko. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link

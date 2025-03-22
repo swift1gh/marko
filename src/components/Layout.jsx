@@ -135,7 +135,7 @@ const Layout = ({ children }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50"
+              className="fixed inset-0 bg-black/50 z-50 "
               onClick={() => setIsProfileOpen(false)}
             />
             <motion.div
@@ -143,7 +143,7 @@ const Layout = ({ children }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", duration: 0.3 }}
-              className="fixed top-4 right-4 w-80 bg-white rounded-2xl shadow-xl z-50 overflow-hidden">
+              className="fixed top-4 md:top-16 right-4 w-80 bg-white rounded-2xl shadow-xl z-50 overflow-hidden">
               <div className="p-6">
                 {/* Profile Header */}
                 <div className="mb-6 pb-6 border-b border-gray-200">

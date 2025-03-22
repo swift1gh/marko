@@ -15,9 +15,9 @@ const TermsPage = () => {
             1. Acceptance of Terms
           </h2>
           <p className="text-gray-600 mb-4">
-            By accessing and using Marko Marketplace, you agree to be bound by
-            these Terms of Service. If you do not agree to these terms, please
-            do not use our platform.
+            By accessing and using Marko, you agree to be bound by these Terms
+            of Service. If you do not agree to these terms, please do not use
+            our platform.
           </p>
         </section>
 
@@ -38,10 +38,10 @@ const TermsPage = () => {
             3. Student Verification
           </h2>
           <p className="text-gray-600 mb-4">
-            Marko Marketplace is exclusively for students. By creating an
-            account, you confirm that you are currently enrolled in an
-            accredited educational institution. We reserve the right to verify
-            your student status and may require additional documentation.
+            Marko is exclusively for students. By creating an account, you
+            confirm that you are currently enrolled in an accredited educational
+            institution. We reserve the right to verify your student status and
+            may require additional documentation.
           </p>
         </section>
 
@@ -89,9 +89,9 @@ const TermsPage = () => {
             7. Intellectual Property
           </h2>
           <p className="text-gray-600 mb-4">
-            All content on Marko Marketplace, including text, graphics, logos,
-            and software, is the property of Marko Marketplace or its licensors
-            and is protected by intellectual property laws.
+            All content on Marko, including text, graphics, logos, and software,
+            is the property of Marko or its licensors and is protected by
+            intellectual property laws.
           </p>
         </section>
 
@@ -100,9 +100,9 @@ const TermsPage = () => {
             8. Limitation of Liability
           </h2>
           <p className="text-gray-600 mb-4">
-            Marko Marketplace is not liable for any indirect, incidental,
-            special, consequential, or punitive damages resulting from your use
-            of or inability to use our platform.
+            Marko is not liable for any indirect, incidental, special,
+            consequential, or punitive damages resulting from your use of or
+            inability to use our platform.
           </p>
         </section>
 

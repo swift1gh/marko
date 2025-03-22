@@ -68,7 +68,7 @@ const FAQPage = () => {
             Frequently Asked Questions
           </h1>
           <p className="mt-6 text-xl text-purple-100 max-w-3xl">
-            Find answers to common questions about using Marko Marketplace
+            Find answers to common questions about using Marko
           </p>
         </div>
       </div>
