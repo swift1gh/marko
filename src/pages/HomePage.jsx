@@ -1,4 +1,6 @@
 import { FiStar } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import HeroSection from "../components/home/HeroSection";
 import FlashSales from "../components/home/FlashSales";
 import StudentFeatures from "../components/home/StudentFeatures";
@@ -6,8 +8,28 @@ import FeaturedProducts from "../components/home/FeaturedProducts";
 import Newsletter from "../components/home/Newsletter";
 import ProductCategories from "../components/home/ProductCategories";
 import StudyAndWork from "../components/home/StudyAndWork";
+import Toast from "../components/shared/Toast";
+import { useState, useEffect } from "react";
 
 const HomePage = () => {
+  const location = useLocation();
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [welcomeMessage, setWelcomeMessage] = useState("");
+
+  useEffect(() => {
+    if (location.state?.showWelcome && location.state?.userName) {
+      setWelcomeMessage(`Welcome to Marko, ${location.state.userName}! 🎉`);
+      setShowWelcome(true);
+      
+      // Clear the welcome message after 5 seconds
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   const featuredProducts = [
     {
       id: 1,
@@ -101,6 +123,21 @@ const HomePage = () => {
 
   return (
     <div>
+      <AnimatePresence>
+        {showWelcome && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50">
+            <Toast
+              message={welcomeMessage}
+              type="success"
+              onClose={() => setShowWelcome(false)}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <HeroSection />
       <ProductCategories />
       <FlashSales />
