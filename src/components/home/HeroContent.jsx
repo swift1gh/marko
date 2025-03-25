@@ -9,7 +9,7 @@ const HeroContent = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 font-display tracking-tight">
         Welcome to{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-200 to-primary-100">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-100">
           Marko
         </span>
       </motion.h1>
@@ -27,11 +27,11 @@ const HeroContent = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="text-lg text-gray-200 max-w-2xl mx-auto">
-        From textbooks to tech, find everything you need for success at
-        Kwame Nkrumah University of Science and Technology
+        From textbooks to tech, find everything you need for success at Kwame
+        Nkrumah University of Science and Technology
       </motion.p>
     </>
   );
 };
 
-export default HeroContent; 
+export default HeroContent;
